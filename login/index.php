@@ -21,8 +21,6 @@ require "functions.php";
 
 <h2><?php echo 'TO DO LIST'?></h2>
 
-<?php require "../todoPage.php" ?>
-
   
 </body>
 </html>

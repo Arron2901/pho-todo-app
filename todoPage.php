@@ -1,10 +1,11 @@
 <?php
-    require "functions.php";
+    require "login/functions.php";
+    $id = $_SESSION['info']['id'];
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $todo = addslashes($_POST['todoName']);
 
-        $query = "insert into todo (Todo) values ('$todo')";
+        $query = "insert into todos (todo, userid) values ('$todo', '$id')";
 
         $result = mysqli_query($con, $query);
     }
@@ -27,11 +28,11 @@
     </div>
 
     <?php
-        $getTodos = "SELECT Todo FROM `todo`;";
+        $getTodos = "SELECT todo FROM `todos` WHERE `userid` = '$id';";
         $allTodos = mysqli_query($con, $getTodos);
         $finalTodos = mysqli_fetch_all($allTodos);
 
-        $getCompletedValues = "SELECT `completed` FROM `todo`;";;
+        $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
         $allCompleted = mysqli_query($con, $getCompletedValues);
         $finalCompleted = mysqli_fetch_all($allCompleted);
         // $finalTodos[$x][0]
@@ -48,6 +49,11 @@
                 <form action = "delete.php" method="post" style="display: inline-block;">
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodos[$x][0] ?>">
                     <button>Delete</button>
+                </form>
+
+                <form action = "edit.php" method="post" style="display: inline-block;">
+                     <input type="hidden" name = "updatedTodo" value = "<?php echo $finalTodos[$x][0] ?>">
+                    <button>Update</button>
                 </form>
 
             </div>

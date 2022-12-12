@@ -1,6 +1,6 @@
 <?php
 
-require "./login/functions.php";
+//require "./login/functions.php";
 
 ?>
 
@@ -19,9 +19,10 @@ require "./login/functions.php";
 
 <h1>To do list</h1>
 
-<h2><?php echo "Welcome ". $_SESSION['info']['email']?></h2>
+
 
 <!-- put your to-do list stuff here -->
+<?php require "./todoPage.php" ?>
 
   
 </body>

@@ -25,7 +25,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     // saves the users info, allows it to be used on allpages throughout the session.
     $_SESSION['info'] = $row;
-    header("Location: todo.php");
+    //print_r($row);
+    header("Location: ../todo.php");
     die;
     
   } else {

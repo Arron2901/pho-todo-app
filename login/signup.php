@@ -36,8 +36,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <h1> SIGN UP </h1>
 <form method ='post'>
-  <input type = 'email' name = 'email' required ><br>
-  <input type = 'password' name = 'password' required><br>
+  <input type = 'email' placeholder = "E-mail" name = 'email' required ><br>
+  <input type = 'password' placeholder = "Password" name = 'password' required><br>
 
   <button>SignUp</button>
 

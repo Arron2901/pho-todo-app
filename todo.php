@@ -1,6 +1,6 @@
 <?php
 
-require "functions.php";
+require "./login/functions.php";
 
 ?>
 
@@ -15,7 +15,7 @@ require "functions.php";
 </head>
 <body>
 
-<?php require "header.php";?>
+<?php require "./login/header.php";?>
 
 <h1>To do list</h1>
 

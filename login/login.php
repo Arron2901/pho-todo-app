@@ -48,8 +48,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <h1>LOGIN </h1>
 <form method ='post'>
-  <input type = 'text' name = 'email' required><br>
-  <input type = 'password' name = 'password' required><br>
+  <input type = 'text' placeholder = "E-mail" name = 'email' required><br>
+  <input type = 'password' placeholder = "Password" name = 'password' required><br>
 
   <button>Log In</button>
 

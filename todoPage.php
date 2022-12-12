@@ -52,7 +52,8 @@
                 </form>
 
                 <form action = "edit.php" method="post" style="display: inline-block;">
-                     <input type="hidden" name = "updatedTodo" value = "<?php echo $finalTodos[$x][0] ?>">
+                    <input type="hidden" name = "todo_name" value = "<?php echo $finalTodos[$x][0] ?>">
+                    <input type="text" name = "updatedTodo" placeholder = 'Updated Todo'>
                     <button>Update</button>
                 </form>
 

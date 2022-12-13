@@ -52,29 +52,34 @@
 
         
         for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
-            
-            <div style = "margin-bottom: 20px;">
-                <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
+            <div class= 'todoContainer2'>
+
+                <div class= 'todoContent'>
+
+                 <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
                     <input type = 'checkbox'>
                 </form>
 
                 <?php echo $finalTodosNotCompleted[$x][0]; ?>
 
-                <form action = "delete.php" method="post" style="display: inline-block;">
+        </div>
+
+                <div class = 'todoActionsContainer'>
+
+                <form action = "delete.php" method="post" class = 'todoActions'>
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
-                    <button>Delete</button>
+                    <button class = 'deleteBtn'>Delete</button>
                 </form>
 
-                <form action = "edit.php" method="post" style="display: inline-block;">
+                <form class = 'todoActions' action = "edit.php" method="post" >
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
                     <input type="text" name = "updatedTodo" placeholder = 'Updated Todo'>
-                    <button>Update</button>
+                    <button class = 'updateBtn'>Update</button>
 
                 </form>
-
-
-            </div>
+        </div>
+        </div>
 
         <?php endfor ?>
 </div> 
@@ -83,7 +88,8 @@
     <div class= 'todoContainer1'>
         <?php
             for ($x = 0; $x < count($finalTodosCompleted); $x++): ?>
-            <div style = "margin-bottom: 20px;">
+            <!-- <div style = "margin-bottom: 20px;"> -->
+                <div class= 'todoContainer2'>
                 <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
                     <input type = 'checkbox' checked="checked">
@@ -91,10 +97,12 @@
 
                 <?php echo $finalTodosCompleted[$x][0]; ?>
 
-                <form action = "delete.php" method="post" style="display: inline-block;">
+                <div class = 'todoActionsContainer'>
+                <form action = "delete.php" method="post"class = 'todoActions'>
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
-                    <button>Delete</button>
+                    <button class = 'deleteBtn'>Delete</button>
                 </form>
+            </div>
             </div>
         
         <?php endfor ?> 

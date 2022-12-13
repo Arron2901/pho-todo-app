@@ -42,17 +42,21 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Log In Page</title>
+  <link rel = 'stylesheet' href = '/css/login.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Alata&family=Assistant:wght@500&family=Concert+One&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
 <?php require "header.php";?>
+<section class = 'loginContainer'>
 
 <h1>LOGIN </h1>
-<form method ='post'>
-  <input type = 'text' placeholder = "E-mail" name = 'email' required><br>
-  <input type = 'password' placeholder = "Password" name = 'password' required><br>
+  <form  class ='inputContainer' method ='post'>
+  <input class = 'inputBox' type = 'text' placeholder = "E-mail:" name = 'email' required><br>
+  <input class = 'inputBox' type = 'password' placeholder = "Password:" name = 'password' required><br>
 
-  <button>Log In</button>
+  <button class = 'submitBtn'>Log In</button>
 
   <?php 
 // if the error variable isnt empty then print the error on screen 
@@ -60,9 +64,9 @@ if(!empty($error)){
   echo "<div>".$error."</div>";
 }
 ?>
-
-
 </form>
+
+</section>
 
 
   

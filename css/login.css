@@ -1,0 +1,61 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: beige;
+  border-radius: 20px;
+  margin: 50px;
+  padding-top: 20px;
+  font-family: 'Alata', sans-serif;
+  font-family: 'Assistant', sans-serif;
+  padding-bottom: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.inputContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputBox{
+  border-radius: 20px;
+  font-family: 'Assistant', sans-serif;
+  border: none;
+  padding: 8px;
+}
+
+
+.submitBtn{
+  border-radius: 20px;
+  font-family: 'Concert One', cursive;
+  border: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 70px;
+  padding: 8px;
+}
+
+.submitBtn:hover{
+  background-color: #555555;
+  color: white;
+}
+
+.navBar{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: beige;
+  font-family: 'Assistant', sans-serif;
+  border-radius: 5px;
+}
+
+.pageName{
+  color: black;
+}

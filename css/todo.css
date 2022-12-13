@@ -1,0 +1,124 @@
+.navBar {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 10px;
+  font-weight: bold;
+  background-color: beige;
+  font-family: 'Assistant', sans-serif;
+  border-radius: 5px;
+}
+
+.pageName {
+  color: black;
+}
+
+.pageTitle{
+font-family: 'Assistant', sans-serif;
+  text-align: center;
+
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: beige;
+  border-radius: 20px;
+  margin: 50px;
+  padding-top: 20px;
+  font-family: 'Alata', sans-serif;
+  font-family: 'Assistant', sans-serif;
+  padding-bottom: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submitBtn {
+  border-radius: 10px;
+  font-family: 'Assistant', sans-serif;
+  border: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  width: 35px;
+  padding: 8px;
+  font-weight:900;
+  background-color: #555555;
+  color: white;
+}
+
+.submitBtn:hover {
+  opacity: 0.5;
+}
+
+.inputBox{
+  border-radius: 10px;
+  font-family: 'Assistant', sans-serif;
+  padding: 8px;
+}
+
+.todoContainer1{
+  display: flex;
+  opacity:0.9;
+  flex-direction: column;
+  background-color: #555555;
+  border-radius: 15px;
+  margin: 50px;
+  padding-top: 20px;
+  font-family: 'Alata', sans-serif;
+  font-family: 'Assistant', sans-serif;
+  padding-bottom: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.todoContainer2{
+  margin: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.todoContent{
+    display: inline-block;
+    gap: 5px;
+    padding-right: 5px;
+    color: white;
+
+}
+
+
+.todoActions{
+  display: inline-block;
+  gap: 5px;
+  padding-right: 5px;
+}
+
+
+.deleteBtn{
+    border-radius: 10px;
+    font-family: 'Assistant', sans-serif;
+    border: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 8px;
+    font-weight: 900;
+    background-color: beige;
+
+}
+
+.updateBtn {
+      border-radius: 10px;
+      font-family: 'Assistant', sans-serif;
+      border: none;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      padding: 8px;
+      font-weight: 900;
+      background-color: beige;
+}

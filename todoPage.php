@@ -18,16 +18,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div>
+
+        <section class='loginContainer'>
         <form method="post">
-            <input type="text" name="todoName" placeholder="Enter your todo">
-            <button>Submit</button>
+            <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
+            <button class = 'submitBtn'>+</button>
         </form>
-    </div>
+</section>
+
+
 
     <h2>Not Completed</h2>
+
+<div class= 'todoContainer1'>
+
     <?php
         $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
         $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
@@ -40,7 +47,7 @@
         $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
         $allCompleted = mysqli_query($con, $getCompletedValues);
         $finalCompleted = mysqli_fetch_all($allCompleted);
-        
+
         
         for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
             
@@ -61,9 +68,13 @@
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
                     <input type="text" name = "updatedTodo" placeholder = 'Updated Todo'>
                     <button>Update</button>
+
                 </form>
 
+
             </div>
+        </div>
+
 
         <?php endfor ?> 
         
@@ -85,6 +96,10 @@
             </div>
         
         <?php endfor ?> 
+
+
+
+        </div>
 
     <script>
         const checkboxes = document.querySelectorAll('input[type=checkbox]')

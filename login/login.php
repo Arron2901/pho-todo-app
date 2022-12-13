@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 // processing is done at the top 
 require 'functions.php';
 

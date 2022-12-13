@@ -61,9 +61,11 @@
 
 
                 <form   class = 'todoActions' action = "edit.php" method="post">
-                     <input type="hidden" name = "updatedTodo" value = "<?php echo $finalTodos[$x][0] ?>">
-                    <button class = 'updateBtn' >Update</button>
+                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodos[$x][0] ?>">
+                     <input type="text" name = "updatedTodo" placeholder = 'Updated Todo'>
+                     <button class = 'updateBtn' >Update</button>
                 </form>
+
 
             </div>
         </div>

@@ -4,7 +4,7 @@
   gap: 30px;
   padding: 10px;
   font-weight: bold;
-  background-color: beige;
+  background-color: #f1f2f6;
   font-family: 'Assistant', sans-serif;
   border-radius: 5px;
 }
@@ -19,11 +19,15 @@ font-family: 'Assistant', sans-serif;
 
 }
 
-.loginContainer {
+.subheading{
+  font-family: 'Assistant', sans-serif;
+}
+
+.inputContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: beige;
+  background-color:#2f3542;
   border-radius: 20px;
   margin: 50px;
   padding-top: 20px;
@@ -58,11 +62,10 @@ font-family: 'Assistant', sans-serif;
   padding: 8px;
 }
 
-.todoContainer1{
+.notcompletedContainer{
   display: flex;
-  opacity:0.9;
   flex-direction: column;
-  background-color: #555555;
+  background-color:#dfe4ea;
   border-radius: 15px;
   margin: 50px;
   padding-top: 20px;
@@ -72,6 +75,24 @@ font-family: 'Assistant', sans-serif;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
+  /* max-width: max-content; */
+
+}
+
+.completedContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #ced6e0;
+  border-radius: 15px;
+  margin: 50px;
+  padding-top: 20px;
+  font-family: 'Alata', sans-serif;
+  font-family: 'Assistant', sans-serif;
+  padding-bottom: 20px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-width: max-content; */
 
 }
 
@@ -88,7 +109,7 @@ font-family: 'Assistant', sans-serif;
     display: inline-block;
     gap: 5px;
     padding-right: 5px;
-    color: white;
+    color:#2f3542;
 
 }
 
@@ -106,9 +127,9 @@ font-family: 'Assistant', sans-serif;
     border: none;
     transition-duration: 0.4s;
     cursor: pointer;
+    color: white;
     padding: 8px;
-    font-weight: 900;
-    background-color: beige;
+    background-color:#2f3542;
 
 }
 
@@ -118,7 +139,20 @@ font-family: 'Assistant', sans-serif;
       border: none;
       transition-duration: 0.4s;
       cursor: pointer;
+      color: white;
       padding: 8px;
-      font-weight: 900;
-      background-color: beige;
+      background-color: #2f3542;
+}
+
+.updateContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center
+
+}
+
+.updateInputContainer{
+  height: 200px;
+  width: 400px;
 }

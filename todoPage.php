@@ -59,6 +59,7 @@
                     <button class = 'deleteBtn'>Delete</button>
                 </form>
 
+
                 <form   class = 'todoActions' action = "edit.php" method="post">
                      <input type="hidden" name = "updatedTodo" value = "<?php echo $finalTodos[$x][0] ?>">
                     <button class = 'updateBtn' >Update</button>

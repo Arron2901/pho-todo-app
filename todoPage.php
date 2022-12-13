@@ -22,12 +22,12 @@
 </head>
 <body>
 
-        <section class='loginContainer'>
+    <section class='loginContainer'>
         <form method="post">
             <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
             <button class = 'submitBtn'>+</button>
         </form>
-</section>
+    </section>
 
 
 
@@ -39,6 +39,8 @@
         $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
         $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
         $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
+
+        
 
         $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
         $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
@@ -73,12 +75,12 @@
 
 
             </div>
-        </div>
 
-
-        <?php endfor ?> 
+        <?php endfor ?>
+</div> 
         
         <h2>Completed</h2>
+    <div class= 'todoContainer1'>
         <?php
             for ($x = 0; $x < count($finalTodosCompleted); $x++): ?>
             <div style = "margin-bottom: 20px;">
@@ -97,9 +99,9 @@
         
         <?php endfor ?> 
 
+    </div>
 
 
-        </div>
 
     <script>
         const checkboxes = document.querySelectorAll('input[type=checkbox]')

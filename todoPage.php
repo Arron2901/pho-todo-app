@@ -4,10 +4,23 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $todo = addslashes($_POST['todoName']);
+        $todo = trim($todo);
 
-        $query = "insert into todos (todo, userid) values ('$todo', '$id')";
+        $checkTodosQuery = "select * from todos where todo = '$todo'";
+        $runQuery = mysqli_query($con, $checkTodosQuery);
 
-        $result = mysqli_query($con, $query);
+        if (mysqli_num_rows($runQuery) > 0) {
+            echo '<script type="text/javascript">';
+            echo 'alert ("To-do already exists!")';
+            echo '</script>';
+        } else if (!$todo) {
+            echo '<script type="text/javascript">';
+            echo 'alert ("Cannot have a blank to-do!")';
+            echo '</script>';
+        } else {
+            $query = "insert into todos (todo, userid) values ('$todo', '$id')";
+            $result = mysqli_query($con, $query);
+        }
     }
 
     $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";

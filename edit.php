@@ -8,8 +8,9 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //print_r($todoName);
-        $todoName = $_POST['todo_name'];
+        $todoName = $_POST['to-dos'];
         $updatedTodo = $_POST['updatedTodo'];
+        
 
         $updateQuery = "UPDATE `todos` SET `todo` = '$updatedTodo' WHERE `todo` = '$todoName'";
         $sqliRun = mysqli_query($con, $updateQuery);

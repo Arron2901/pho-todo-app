@@ -33,6 +33,8 @@
         } else {
             $updateQuery = "UPDATE `todos` SET `todo` = '$updatedTodo' WHERE `todo` = '$todoName'";
             $sqliRun = mysqli_query($con, $updateQuery);
+            // print_r($todoName);
+            // print_r($updatedTodo);
             header('Location: todo.php');
         }
     };

@@ -21,39 +21,39 @@ font-family: 'Assistant', sans-serif;
 
 .subheading{
   font-family: 'Assistant', sans-serif;
+  font-weight:bold;
 }
 
 .inputContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:#2f3542;
   border-radius: 20px;
-  margin: 50px;
-  padding-top: 20px;
-  font-family: 'Alata', sans-serif;
+  margin: 10px;
   font-family: 'Assistant', sans-serif;
-  padding-bottom: 20px;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  /* background-color: white; */
+  padding: 10px;
+  gap: 20px;
 }
 
 .submitBtn {
   border-radius: 10px;
   font-family: 'Assistant', sans-serif;
-  border: none;
+  border-color: #dfe4ea;
+  border-width:thin;
+  border-style: solid;
   transition-duration: 0.4s;
   cursor: pointer;
-  width: 35px;
+  /* color: white; */
   padding: 8px;
-  font-weight:900;
-  background-color: #555555;
-  color: white;
+  cursor: pointer;
+  padding: 8px;
+  background-color:white;
+  font-size: 16px;
 }
 
 .submitBtn:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .inputBox{
@@ -67,33 +67,32 @@ font-family: 'Assistant', sans-serif;
   flex-direction: column;
   background-color:#dfe4ea;
   border-radius: 15px;
-  margin: 50px;
-  padding-top: 20px;
+  /* margin: 50px; */
+  /* padding-top: 20px; */
   font-family: 'Alata', sans-serif;
   font-family: 'Assistant', sans-serif;
-  padding-bottom: 20px;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  /* padding-bottom: 20px; */
+  /* width: 500px; */
+  /* margin-left: auto;
+  margin-right: auto; */
   /* max-width: max-content; */
 
 }
 
 .completedContainer {
   display: flex;
-  flex-direction: column;
-  background-color: #ced6e0;
-  border-radius: 15px;
-  margin: 50px;
-  padding-top: 20px;
-  font-family: 'Alata', sans-serif;
-  font-family: 'Assistant', sans-serif;
-  padding-bottom: 20px;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  /* max-width: max-content; */
-
+    flex-direction: column;
+    background-color: #dfe4ea;
+    border-radius: 15px;
+    /* margin: 50px; */
+    /* padding-top: 20px; */
+    font-family: 'Alata', sans-serif;
+    font-family: 'Assistant', sans-serif;
+    /* padding-bottom: 20px; */
+    /* width: 500px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* max-width: max-content; */
 }
 
 .todoContainer2{
@@ -139,9 +138,13 @@ font-family: 'Assistant', sans-serif;
       border: none;
       transition-duration: 0.4s;
       cursor: pointer;
-      color: white;
+      /* color: white; */
       padding: 8px;
-      background-color: #2f3542;
+      background-color: white;
+}
+
+.updateBtn:hover {
+  opacity: 0.7;
 }
 
 .updateContainer{
@@ -155,4 +158,65 @@ font-family: 'Assistant', sans-serif;
 .updateInputContainer{
   height: 200px;
   width: 400px;
+}
+
+.addContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center
+
+}
+
+.filterContainer{
+    display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #2f3542;
+      border-radius: 20px;
+      font-family: 'Alata', sans-serif;
+      font-family: 'Assistant', sans-serif;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: space-between;
+}
+
+.filterOptions{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+}
+
+.todoSection{
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.filterStyle{
+  color: white;
+  font-weight: 500;
+}
+
+.bodyContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.topContainer{
+    display: flex;
+    flex-direction: row;
+    background-color: #2f3542;
+    margin: 20px;
+    border-radius: 20px;
+    width: 50%;
+    align-self: start;
+    align-items: center;
+    margin:auto;
+
 }

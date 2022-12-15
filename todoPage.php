@@ -5,6 +5,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $todo = addslashes($_POST['todoName']);
         $todo = trim($todo);
+        $dueDate = $_POST['dueDate'];
 
         $checkTodosQuery = "select * from todos where todo = '$todo'";
         $runQuery = mysqli_query($con, $checkTodosQuery);
@@ -18,7 +19,7 @@
             echo 'alert ("Cannot have a blank to-do!")';
             echo '</script>';
         } else {
-            $query = "insert into todos (todo, userid) values ('$todo', '$id')";
+            $query = "insert into todos (todo, userid, date) values ('$todo', '$id', '$dueDate')";
             $result = mysqli_query($con, $query);
         }
     }
@@ -36,6 +37,10 @@
     $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
     $allCompleted = mysqli_query($con, $getCompletedValues);
     $finalCompleted = mysqli_fetch_all($allCompleted);
+
+    $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id';";;
+    $allDueDates = mysqli_query($con, $getDueDates);
+    $finalDueDates = mysqli_fetch_all($allDueDates);
 ?>
 
 <!DOCTYPE html>
@@ -50,13 +55,37 @@
 </head>
 <body>
 
-
-<!-- Modal -->
+<!-- Add Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update To-do</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add To-do</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form class = 'addContainer' method="post">
+            <h2>Add a new to-do</h2>
+            <input class = 'updateInputContainer' type="text" name="todoName" placeholder="Enter your to do">
+            <h2>Choose Date</h2>
+            <input class = 'updateInputContainer' type="date" name="dueDate" placeholder="Enter your to do">
+            
+            <button class = 'submitBtn'>Add</button>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- UPDATE Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Update To-do</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -67,11 +96,11 @@
                 <label for="to-dos">Choose a To-do to edit:</label>
                 <select name="to-dos" id="to-dos">
                     <?php for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
-                        <option value= <?php echo $finalTodosNotCompleted[$x][0] ?>><?php echo $finalTodosNotCompleted[$x][0] ?></option>
+                        <option value= '<?php echo $finalTodosNotCompleted[$x][0] ?>'><?php echo $finalTodosNotCompleted[$x][0] ?></option>
                     <?php endfor ?>
                 </select>
                 <input class = 'updateInputContainer' type="text" name = "updatedTodo" 
-                placeholder = 'Enter your updated to here Updated Todo here '>
+                placeholder = 'Enter your updated Todo here '>
                 <button class="updateBtn">Update</button>
             </form>
       </div>
@@ -79,96 +108,56 @@
   </div>
 </div>
 
+<section class = 'bodyContainer'>
+    <section class = 'topContainer'>
     <section class='inputContainer'>
-        <form method="post">
+        <!-- <form method="post">
             <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
             <button class = 'submitBtn'>+</button>
             <button type="button" class = 'updateBtn' data-toggle="modal" data-target="#exampleModal"> Update </button>
-        </form>
+        </form> -->
+        <form method = "post">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add</button>
+
+                    <button type="button" class = "btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">Update </button>
+                    </form>
     </section>
 
+    <section class='filterContainer'>
+        <p class = 'filterStyle' >Filter by:</p>
+        <div class = 'filterOptions'>
+
+            <button class="btn btn-secondary">Due Date</button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+            </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">work</a></li>
+                    <li><a class="dropdown-item" href="#">personal</a></li>
+                    <li><a class="dropdown-item" href="#">finances</a></li>
+                    </ul>
+        </div>
+
+    </section>
+                </section>
 
 
-    <h2 class = 'subheading'>Not Completed</h2>
+<section class = 'todoSection' >
+    <div class = 'container'>
+    <p class = 'subheading'>Not Completed</p>
 
 
 
 <div class= 'notcompletedContainer'>
 
-    <?php
-        // $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
-        // $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
-        // $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
+<?php require 'displayTodos.php' ?>
 
-        
-
-        // $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
-        // $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
-        // $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
-
-        // $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
-        // $allCompleted = mysqli_query($con, $getCompletedValues);
-        // $finalCompleted = mysqli_fetch_all($allCompleted);
-
-        
-        for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
-            <div class= 'todoContainer2'>
-
-                <div class= 'todoContent'>
-
-                 <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
-                    <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
-                    <input type = 'checkbox'>
-                </form>
-
-                <?php echo $finalTodosNotCompleted[$x][0]; ?>
-
-        </div>
-
-                <div class = 'todoActionsContainer'>
-
-                <form action = "delete.php" method="post" class = 'todoActions'>
-                    <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
-                    <button class = 'deleteBtn'>Delete</button>
-                </form>
-
-               
-
-        </div>
-        </div>
-
-        <?php endfor ?>
-</div> 
-        
-        <h2 class = 'subheading'>Completed</h2>
-    <div class= 'completedContainer'>
-        <?php
-            for ($x = 0; $x < count($finalTodosCompleted); $x++): ?>
-            <!-- <div style = "margin-bottom: 20px;"> -->
-                <div class= 'todoContainer2'>
-                 <div class= 'todoContent'>
-                <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
-                    <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
-                    <input type = 'checkbox' checked="checked">
-                    <?php echo $finalTodosCompleted[$x][0]; ?>
-                </form>
-                </div>
-
-
-                <div class = 'todoActionsContainer'>
-                <form action = "delete.php" method="post"class = 'todoActions'>
-                    <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
-                    <button class = 'deleteBtn'>Delete</button>
-                </form>
-
-                
-            </div>
-            
-            </div>
-        
-        <?php endfor ?> 
-
+   
     </div>
+    </div>
+
+            </section>
+            </section>
 
 
 

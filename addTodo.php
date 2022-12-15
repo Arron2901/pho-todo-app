@@ -25,6 +25,7 @@
         } else {
             $query = "insert into todos (todo, userid, date, category) values ('$todo', '$id', '$dueDate', '$todoCategory')";
             $result = mysqli_query($con, $query);
+            header("Location: todo.php");
         }
     }
 

@@ -49,15 +49,27 @@ $finalCategory = mysqli_fetch_all($allCategories);
         </button>
       </div>
       <div class="modal-body">
-            <form class = 'addContainer' method="post" action = "addTodo.php">
+            <form  action = 'addTodo.php' class = 'addContainer' method="post">
             <h2>Add a new to-do</h2>
-            <input class = 'updateInputContainer' type="text" name="todoName" placeholder="Enter your to do">
-            <h2>Give it a category</h2>
-            <input class = 'updateInputContainer' type = 'text' name="categoryName">
-            <h2>Choose Date</h2>
-            <input class = 'updateInputContainer' type="date" name="dueDate" placeholder="Add the due date">
+            <div class = 'featureContainer'>
+            
+            <div class = 'dateContainer'>
+              <p> Due Date </p>
+              <input class = 'dateDropdown' value = '<?php echo date("d/m/Y") ?>' type="date" name="dueDate">
+            </div>
+
+            <div class = 'categoryContainer'>
+              <p>Category</p>
+              <input class = 'categoryDropdown' type="text" name="categoryName">
+            </div>
+            </div>
+
+            <div class = 'userInputContainer'>
+              <input class = 'updateInputContainer' type="text" name="todoName" placeholder="Add a To-do">
+            </div>
             
             <button class = 'submitBtn'>Add</button>
+
             </form>
       </div>
     </div>
@@ -77,13 +89,14 @@ $finalCategory = mysqli_fetch_all($allCategories);
       </div>
       <div class="modal-body">
             <form class = 'updateContainer' action = "edit.php" method="post">
-            <!-- have the current to do as a place holder -->
+              <div class = 'categoryContainer'>
                 <label for="to-dos">Choose a To-do to edit:</label>
                 <select name="to-dos" id="to-dos">
                     <?php for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
                         <option value= '<?php echo $finalTodosNotCompleted[$x][0] ?>'><?php echo $finalTodosNotCompleted[$x][0] ?></option>
                     <?php endfor ?>
                 </select>
+                    </div>
                 <input class = 'updateInputContainer' type="text" name = "updatedTodo" 
                 placeholder = 'Enter your updated Todo here '>
                 <button class="updateBtn">Update</button>

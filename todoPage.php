@@ -163,6 +163,7 @@ $finalCategory = mysqli_fetch_all($allCategories);
     if (isset($_GET['sortOption'])) {
         if ($_GET['sortOption'] == "DueDate") {
             $chosenSort = 'DueDate';
+            require "sortByDate.php";
         } else if ($_GET['sortOption'] !== "DueDate" && $_GET['sortOption'] !== "") {
             $chosenSort = $_GET['sortOption'];
             
@@ -183,9 +184,7 @@ $finalCategory = mysqli_fetch_all($allCategories);
             $finalCompleted = mysqli_fetch_all($allCompleted);
 
             require "categoryFilter.php";
-
-
-        } 
+        }
     } else {
         require 'UnorderedTodos.php' ;
     }

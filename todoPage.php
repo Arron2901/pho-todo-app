@@ -1,6 +1,28 @@
 <?php 
+$id = $_SESSION['info']['id'];
 
-require 'addTodo.php';
+$getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
+$allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
+$finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
+
+
+
+$getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
+$allTodosCompleted = mysqli_query($con, $getTodosCompleted);
+$finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
+
+$getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
+$allCompleted = mysqli_query($con, $getCompletedValues);
+$finalCompleted = mysqli_fetch_all($allCompleted);
+
+$getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id';";;
+$allDueDates = mysqli_query($con, $getDueDates);
+$finalDueDates = mysqli_fetch_all($allDueDates);
+
+$getCategory = "SELECT DISTINCT `category` FROM `todos` WHERE `userid` = '$id';";;
+$allCategories = mysqli_query($con, $getCategory);
+$finalCategory = mysqli_fetch_all($allCategories);
+//require 'addTodo.php';
 
 ?>
 
@@ -103,17 +125,20 @@ require 'addTodo.php';
         <p class = 'filterStyle' >Filter by:</p>
         <div class = 'filterOptions'>
 
-            <button class="btn btn-secondary">Due Date</button>
-
-        <select name="categoryName" id="categoryName" class = 'btn btn-secondary dropdown-toggle'>
-            <option value="" placeholder = 'Filters'></option>
-            <option value = "DueDate">Due Date</option>
-            <option value="" disabled selected>--Categories--</option>
+        <form action = "todo.php" method = "post">
+            <select name="categoryName" id="categoryName" class = 'btn btn-secondary dropdown-toggle'>
+                <option value="" disabled selected>Filters</option>
+                <option value = "DueDate">Due Date</option>
+                <option value="" disabled>--Categories--</option>
                 
-                    <?php for ($x = 0; $x < count($finalCategory); $x++): ?>
-                        <option value= '<?php echo $finalCategory[$x][0] ?>'><?php echo $finalCategory[$x][0] ?></option>
-                    <?php endfor ?>
-        </select>
+                <?php for ($x = 0; $x < count($finalCategory); $x++): ?>
+                    <option value= '<?php echo $finalCategory[$x][0] ?>'><?php echo $finalCategory[$x][0] ?></option>
+                <?php endfor ?>
+            </select>
+
+            <button>Refresh</button>
+
+        </form>
 
         </div>
 
@@ -131,7 +156,12 @@ require 'addTodo.php';
 
 <div class= 'notcompletedContainer'>
 
-<?php require 'displayTodos.php' ?>
+<?php 
+    require 'displayTodos.php' ;
+
+
+
+?>
 
    
     </div>

@@ -103,10 +103,10 @@ font-family: 'Assistant', sans-serif;
   justify-content: space-between;
 
 }
-
+/* 
 .checkbox{
   /* border-radius: 50px; */
-}
+
 
 .todoContent{
     display: inline-block;

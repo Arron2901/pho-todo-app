@@ -49,7 +49,7 @@ $finalCategory = mysqli_fetch_all($allCategories);
         </button>
       </div>
       <div class="modal-body">
-            <form  id = 'addForm' class = 'addContainer' method="post">
+            <form  action = 'addTodo.php' class = 'addContainer' method="post">
             <h2>Add a new to-do</h2>
             <div class = 'featureContainer'>
             

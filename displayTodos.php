@@ -22,7 +22,7 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
 
                  <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
                     <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
-                    <input type = 'checkbox'>
+                    <input type = 'checkbox' class = 'checkbox'>
                 </form>
 
                 <?php echo $finalTodosNotCompleted[$x][0]; ?>

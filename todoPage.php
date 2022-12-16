@@ -112,21 +112,21 @@ $finalCategory = mysqli_fetch_all($allCategories);
         <p class = 'filterStyle' >Filter by:</p>
         <div class = 'filterOptions'>
 
-        <form action = "todo.php" method = "post">
-            <select name="categoryName" id="categoryName" class = 'btn btn-secondary dropdown-toggle'>
-                <option value="" disabled selected>Filters</option>
-                <option value = "DueDate">Due Date</option>
-                <option value="" disabled>--Categories--</option>
-                
+    <form action="" method = "GET">
+        <select name="sortOption" class="form-control">
+                <option value="" disabled selected>--Select Option--</option>
+                <option value="DueDate" <?php if(isset($_GET['sortOption']) && $_GET['sortOption'] == "DueDate") { echo "selected"; } ?> >Due Date</option>
+                <option value="" disabled >Categories</option>
+
                 <?php for ($x = 0; $x < count($finalCategory); $x++): ?>
-                    <option value= '<?php echo $finalCategory[$x][0] ?>'><?php echo $finalCategory[$x][0] ?></option>
+                    <option value= '<?php echo $finalCategory[$x][0] ?>' <?php if(isset($_GET['sortOption']) && $_GET['sortOption'] == $finalCategory[$x][0]) { echo "selected"; } ?>><?php echo $finalCategory[$x][0] ?></option>
                 <?php endfor ?>
+
             </select>
+            <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Filter</button>
 
-            <button>Refresh</button>
-
-        </form>
-
+    </form>
+            
         </div>
 
 
@@ -144,9 +144,38 @@ $finalCategory = mysqli_fetch_all($allCategories);
 <div class= 'notcompletedContainer'>
 
 <?php 
-    require 'displayTodos.php' ;
+
+    $chosenSort = "";
+
+    if (isset($_GET['sortOption'])) {
+        if ($_GET['sortOption'] == "DueDate") {
+            $chosenSort = 'DueDate';
+        } else if ($_GET['sortOption'] !== "DueDate" && $_GET['sortOption'] !== "") {
+            $chosenSort = $_GET['sortOption'];
+            
+            $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0 AND `category` = '$chosenSort';";
+            $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
+            $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
+          
+            $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id';";;
+            $allDueDates = mysqli_query($con, $getDueDates);
+            $finalDueDates = mysqli_fetch_all($allDueDates);
+
+            $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
+            $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
+            $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
+          
+            $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
+            $allCompleted = mysqli_query($con, $getCompletedValues);
+            $finalCompleted = mysqli_fetch_all($allCompleted);
+
+            require "categoryFilter.php";
 
 
+        } 
+    } else {
+        require 'UnorderedTodos.php' ;
+    }
 
 ?>
 

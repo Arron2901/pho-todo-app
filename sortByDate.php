@@ -1,4 +1,5 @@
 <?php 
+
     $id = $_SESSION['info']['id'];
     $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
     $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
@@ -33,7 +34,7 @@
 
     for ($x=0; $x < count($finalTodosNotCompleted); $x++): ?>
         <?php if ($newDatesArray[$x]): ?>
-            
+
         <?php endif ?>
     <div class= 'todoContainer2'>
 

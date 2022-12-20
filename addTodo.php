@@ -11,7 +11,7 @@
 
         $dueDate = $_POST['dueDate'];
 
-        $checkTodosQuery = "select * from todos where todo = '$todo'";
+        $checkTodosQuery = "select * from todos where todo = '$todo' AND `userid` = '$id'";
         $runQuery = mysqli_query($con, $checkTodosQuery);
 
         if (mysqli_num_rows($runQuery) > 0) {

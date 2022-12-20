@@ -8,11 +8,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
   // saving the data sent from user into variables 
   // addslashes helps prevent problems if username contains an apostrophe
+  $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  //query into the db
-  $query = "insert into users (email,password) values('$email','$password')";
+  $validationQuery = "SELECT * FROM `users` WHERE `email` = '$email'";
+  $runValidation = mysqli_query($con, $validationQuery);
+
+  if(mysqli_num_rows($runValidation)> 0){
+    echo "<script>";
+    echo 'alert("Account already exists with that email");';
+    // echo "window.location = 'signup.php';";
+    echo "</script>";
+  } else {
+      $query = "insert into users (name,email,password) values('$name','$email','$password')";
 
   $result = mysqli_query($con, $query);
 
@@ -20,6 +29,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   // redirects you to login page 
   header("Location: login.php");
   die;
+
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -39,12 +50,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 <h1> SIGN UP </h1>
 <form  class ='inputContainer' method ='post'>
+    <input class = 'inputBox' type = 'text' placeholder = "Full Name" name = 'name' required ><br>
   <input class = 'inputBox' type = 'email' placeholder = "E-mail" name = 'email' required ><br>
   <input class = 'inputBox' type = 'password' placeholder = "Password" name = 'password' required><br>
 
   <button class = 'submitBtn'>SignUp</button>
 
 </form>
+
+<section class = 'otherOptions'>
+  <a href= '/login/login.php'>Already a User ?</a>
+
 </section>
 
 

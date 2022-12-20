@@ -26,7 +26,9 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
                 </form>
 
                 <?php echo $finalTodosNotCompleted[$x][0]; ?>
-                <?php echo $finalDueDates[$x][0]; ?>
+                <?php if($finalDueDates[$x][0] !== "0000-00-00"){
+                    echo date_format(date_create($finalDueDates[$x][0]),"d M Y");
+                }; ?>
 
         </div>
 
@@ -74,3 +76,5 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
             </div>
         
         <?php endfor ?>
+
+        

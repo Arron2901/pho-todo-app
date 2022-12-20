@@ -25,6 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $row = mysqli_fetch_assoc($result);
 
     // saves the users info, allows it to be used on allpages throughout the session.
+    $_SESSION["login_time_stamp"] = time(); 
     $_SESSION['info'] = $row;
     //print_r($row);
     header("Location: ../todo.php");

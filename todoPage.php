@@ -15,13 +15,19 @@ $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";
 $allCompleted = mysqli_query($con, $getCompletedValues);
 $finalCompleted = mysqli_fetch_all($allCompleted);
 
-$getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id';";;
+$getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";;
 $allDueDates = mysqli_query($con, $getDueDates);
 $finalDueDates = mysqli_fetch_all($allDueDates);
 
 $getCategory = "SELECT DISTINCT `category` FROM `todos` WHERE `userid` = '$id';";;
 $allCategories = mysqli_query($con, $getCategory);
 $finalCategory = mysqli_fetch_all($allCategories);
+
+
+$getIndividualCategories = "SELECT `category` FROM `todos` WHERE `userid` = '$id' and `completed` = 0  ";;
+$allIndividualCategories = mysqli_query($con, $getIndividualCategories);
+$finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
+
 //require 'addTodo.php';
 
 ?>
@@ -88,7 +94,7 @@ $finalCategory = mysqli_fetch_all($allCategories);
         </button>
       </div>
       <div class="modal-body">
-            <form class = 'updateContainer' action = "edit.php" method="post">
+            <form class = 'updateContainer' action = "editTodo.php" method="post">
               <div class = 'categoryContainer'>
                 <label for="to-dos">Choose a To-do to edit:</label>
                 <select name="to-dos" id="to-dos">
@@ -97,6 +103,20 @@ $finalCategory = mysqli_fetch_all($allCategories);
                     <?php endfor ?>
                 </select>
                     </div>
+
+                     <div class = 'featureContainer'>
+            
+            <div class = 'dateContainer'>
+              <p> Due Date </p>
+              <input class = 'dateDropdown' value = '<?php echo date("d/m/Y") ?>' type="date" name="dueDate">
+            </div>
+
+            <div class = 'categoryContainer'>
+              <p>Category</p>
+              <input class = 'categoryDropdown' type="text" name="categoryName">
+            </div>
+            </div>
+
                 <input class = 'updateInputContainer' type="text" name = "updatedTodo" 
                 placeholder = 'Enter your updated Todo here '>
                 <button class="updateBtn">Update</button>
@@ -125,7 +145,7 @@ $finalCategory = mysqli_fetch_all($allCategories);
         <p class = 'filterStyle' >Filter by:</p>
         <div class = 'filterOptions'>
 
-    <form action="" method = "GET">
+    <form class = 'filterOptions' action="" method = "GET">
         <select name="sortOption" class="form-control">
                 <option value="" disabled selected>--Select Option--</option>
                 <option value="DueDate" <?php if(isset($_GET['sortOption']) && $_GET['sortOption'] == "DueDate") { echo "selected"; } ?> >Due Date</option>
@@ -136,7 +156,7 @@ $finalCategory = mysqli_fetch_all($allCategories);
                 <?php endfor ?>
 
             </select>
-            <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Filter</button>
+            <button type="submit" class="btn btn-secondary" id="basic-addon2">Filter</button>
 
     </form>
             
@@ -170,11 +190,11 @@ $finalCategory = mysqli_fetch_all($allCategories);
             $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
             $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
           
-            $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id';";;
+            $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
             $allDueDates = mysqli_query($con, $getDueDates);
             $finalDueDates = mysqli_fetch_all($allDueDates);
 
-            $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
+            $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1 AND `category` = '$chosenSort';";
             $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
             $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
           
@@ -198,6 +218,39 @@ $finalCategory = mysqli_fetch_all($allCategories);
 
             </section>
             </section>
+
+
+
+<!-- <table>
+    <tr>
+      <th scope=>#</th>
+      <th scope="col">ToDo</th>
+      <th scope="col">Due Date</th>
+      <th scope = 'col'>Category</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table> -->
 
 
 

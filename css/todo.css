@@ -194,7 +194,7 @@ font-family: 'Assistant', sans-serif;
 .filterOptions{
       display: flex;
       flex-direction: row;
-      gap: 10px;
+      gap: 5px;
 }
 
 .todoSection{

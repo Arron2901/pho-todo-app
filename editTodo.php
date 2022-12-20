@@ -8,16 +8,21 @@
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //print_r($todoName);
+        $id = $_SESSION['info']['id'];
         $todoName = $_POST['to-dos'];
         $updatedTodo = $_POST['updatedTodo'];
         $updatedTodo = trim($updatedTodo);
         
+        $todoCategory = addslashes($_POST['categoryName']);
+        $todoCategory = trim($todoCategory);
+
+        $dueDate = $_POST['dueDate'];
 
         // $updateQuery = "UPDATE `todos` SET `todo` = '$updatedTodo' WHERE `todo` = '$todoName'";
         // $sqliRun = mysqli_query($con, $updateQuery);
         // header('Location: todo.php');
 
-        $validationQuery = "SELECT * FROM todos where todo = '$updatedTodo'";
+        $validationQuery = "SELECT * FROM todos where todo = '$updatedTodo' AND `userid` = '$id'";
         $runValidation = mysqli_query($con, $validationQuery);
 
         if (mysqli_num_rows($runValidation) > 0) {
@@ -31,7 +36,9 @@
             echo "window.location = 'todo.php';";
             echo "</script>";
         } else {
-            $updateQuery = "UPDATE `todos` SET `todo` = '$updatedTodo' WHERE `todo` = '$todoName'";
+            $updateQuery = "UPDATE `todos` SET `todo` = '$updatedTodo', `date` = '$dueDate', `category` = '$todoCategory' WHERE `todo` = '$todoName' ";
+
+
             $sqliRun = mysqli_query($con, $updateQuery);
             // print_r($todoName);
             // print_r($updatedTodo);

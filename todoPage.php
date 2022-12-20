@@ -22,7 +22,10 @@ $finalDueDates = mysqli_fetch_all($allDueDates);
 $getCategory = "SELECT DISTINCT `category` FROM `todos` WHERE `userid` = '$id';";;
 $allCategories = mysqli_query($con, $getCategory);
 $finalCategory = mysqli_fetch_all($allCategories);
-//require 'addTodo.php';
+
+$getAllCategories = "SELECT `category` FROM `todos` WHERE `userid` = '$id';";
+$Cats = mysqli_query($con, $getAllCategories);
+$finalAllCategory = mysqli_fetch_all($Cats);
 
 ?>
 
@@ -182,6 +185,8 @@ $finalCategory = mysqli_fetch_all($allCategories);
             $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
             $allCompleted = mysqli_query($con, $getCompletedValues);
             $finalCompleted = mysqli_fetch_all($allCompleted);
+
+            
 
             require "categoryFilter.php";
         }

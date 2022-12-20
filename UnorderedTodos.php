@@ -12,7 +12,10 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
         </form>
 
         <?php echo $finalTodosNotCompleted[$x][0]; ?>
+        <br>
         <?php echo $finalDueDates[$x][0]; ?>
+        <br>
+        <?php echo $finalAllCategory[$x][0] ?>
 
 </div>
 
@@ -44,6 +47,8 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
             <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
             <input type = 'checkbox' checked="checked">
             <?php echo $finalTodosCompleted[$x][0]; ?>
+            <br>
+            <?php echo $finalAllCategory[$x][0] ?>
         </form>
         </div>
 

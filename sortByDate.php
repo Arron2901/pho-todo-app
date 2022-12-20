@@ -46,7 +46,10 @@
             </form>
 
             <?php echo $finalTodosNotCompleted[$x][0]; ?>
+            <br>
             <?php echo $newDatesArray[$x]; ?>
+            <br>
+            <?php echo $finalAllCategory[$x][0] ?>
 
         </div>
 

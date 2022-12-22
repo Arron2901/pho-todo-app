@@ -2,36 +2,68 @@
 // processing is done at the top 
 require 'functions.php';
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+// if($_SERVER['REQUEST_METHOD'] == 'POST'){
   // just to check input has been received 
   // print_r($_POST);
 
   // saving the data sent from user into variables 
   // addslashes helps prevent problems if username contains an apostrophe
+  // $name = $_POST['name'];
+  // $email = $_POST['email'];
+  // $password = $_POST['password'];
+
+  // $validationQuery = "SELECT * FROM `users` WHERE `email` = '$email'";
+  // $runValidation = mysqli_query($con, $validationQuery);
+
+  // if(mysqli_num_rows($runValidation)> 0){
+  //   echo "<script>";
+  //   echo 'alert("Account already exists with that email");';
+  //   // echo "window.location = 'signup.php';";
+  //   echo "</script>";
+  // } else {
+  //     $query = "insert into users (name,email,password) values('$name','$email','$password')";
+    // $result = mysqli_query($con, $query);
+      //  header("Location: login.php");
+      //  die;}
+
+
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+  // before inserting into db, validate to see if account exists. 
+  $validationQuery = "SELECT * FROM `users` WHERE `email` = ?";
+  // Prepare an insert statement
+  $selectStmt = $con ->prepare($validationQuery);
+
+  // Bind variables to the prepared statement as parameters
+  $selectStmt ->bind_param("s", $email);
+
+  //set parameters
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $validationQuery = "SELECT * FROM `users` WHERE `email` = '$email'";
-  $runValidation = mysqli_query($con, $validationQuery);
+  //execute the prepared statement
+  $selectStmt-> execute();
+  $validationResult = $selectStmt-> get_result();
 
-  if(mysqli_num_rows($runValidation)> 0){
+    if(mysqli_num_rows($validationResult)> 0){
     echo "<script>";
     echo 'alert("Account already exists with that email");';
     // echo "window.location = 'signup.php';";
     echo "</script>";
   } else {
-      $query = "insert into users (name,email,password) values('$name','$email','$password')";
 
-  $result = mysqli_query($con, $query);
+       $insertQuery = "INSERT INTO users (name, email, password) VALUES (?,?,?)";
+       $insertStmt= $con->prepare($insertQuery);
+       $insertStmt->bind_param("sss", $name,  $email, $password);
+       $result = $insertStmt->execute();
+      //  $resultStore = $result->fetch_assoc();
+       header("Location: login.php");
+       die;}
 
-
-  // redirects you to login page 
-  header("Location: login.php");
-  die;
-
-  }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

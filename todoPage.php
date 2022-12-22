@@ -44,6 +44,7 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 </head>
 <body>
 
+
 <!-- Add Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -127,8 +128,25 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 </div>
 
 <section class = 'bodyContainer'>
+
+<div class = 'anotherContainer' >
+<h1 class= 'pageTitle' >Echo your To-do's</h1>
+    <section class='addContainer'>
+        <!-- <form method="post">
+            <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
+            <button class = 'submitBtn'>+</button>
+            <button type="button" class = 'updateBtn' data-toggle="modal" data-target="#exampleModal"> Update </button>
+        </form> -->
+        <form method = "post">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add</button>
+
+                    <button type="button" class = "btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">Update </button>
+                    </form>
+    </section>
+                    </div>
+
     <section class = 'topContainer'>
-    <section class='inputContainer'>
+    <section class='addContainer'>
         <!-- <form method="post">
             <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
             <button class = 'submitBtn'>+</button>
@@ -147,7 +165,7 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 
     <form class = 'filterOptions' action="" method = "GET">
         <select name="sortOption" class="form-control">
-                <option value="" disabled selected>--Select Option--</option>
+                <option value="" disabled selected>--Select Filter--</option>
                 <option value="DueDate" <?php if(isset($_GET['sortOption']) && $_GET['sortOption'] == "DueDate") { echo "selected"; } ?> >Due Date</option>
                 <option value="" disabled >Categories</option>
 
@@ -158,6 +176,10 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
             </select>
             <button type="submit" class="btn btn-secondary" id="basic-addon2">Filter</button>
 
+    </form>
+    
+    <form>
+      <button type="submit" class="btn btn-secondary" id="basic-addon2">Reset</button>
     </form>
             
         </div>
@@ -183,6 +205,7 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
     if (isset($_GET['sortOption'])) {
         if ($_GET['sortOption'] == "DueDate") {
             $chosenSort = 'DueDate';
+            require 'sortbyDate.php';
         } else if ($_GET['sortOption'] !== "DueDate" && $_GET['sortOption'] !== "") {
             $chosenSort = $_GET['sortOption'];
             

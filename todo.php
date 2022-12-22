@@ -21,7 +21,6 @@
 
 <?php require "./login/header.php";?>
 
-<h1 class= 'pageTitle' >To do list</h1>
 
 <?php require "./todoPage.php" ?>
 

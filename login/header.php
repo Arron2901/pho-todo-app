@@ -5,7 +5,7 @@ require_once 'functions.php';
 
 if($_SESSION){
 
-     if(time()-$_SESSION["login_time_stamp"] > 300 ) 
+     if(time()-$_SESSION["login_time_stamp"] > 1000 ) 
     {
         session_unset();
         session_destroy();

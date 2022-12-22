@@ -14,8 +14,10 @@
 }
 
 .pageTitle{
-font-family: 'Assistant', sans-serif;
-  text-align: center;
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
+  margin: 20px;
+
 
 }
 
@@ -24,7 +26,7 @@ font-family: 'Assistant', sans-serif;
   font-weight:bold;
 }
 
-.inputContainer {
+.addContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +35,8 @@ font-family: 'Assistant', sans-serif;
   font-family: 'Assistant', sans-serif;
   /* background-color: white; */
   padding: 10px;
-  gap: 20px;
+  gap: 30px;
+  justify-content: center;
 }
 
 .submitBtn {
@@ -229,6 +232,18 @@ font-family: 'Assistant', sans-serif;
     align-items: center;
     margin:auto;
 
+}
+
+.anotherContainer{
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+        border-radius: 20px;
+        /* width: 50%;
+        align-self: start;
+        align-items: center; */
+        /* margin: auto; */
+  
 }
 
 .featureContainer{

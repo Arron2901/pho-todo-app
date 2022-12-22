@@ -45,18 +45,34 @@ require './login/functions.php';
     <input type="email" name = 'email' class="form-control" id="exampleFormControlInput1" value = '<?php echo $emailResult[0][0] ?>' required>
   </div>
 
-    <div class="form-group">
-    <label for="exampleFormControlInput1">Add/Edit profile pic</label>
-    <input name = 'profilePic' type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-
     <button class = 'submitBtn'>Save Changes</button>
-
-
 
 </form>
 
 </section>
+
+<!-- <section class = 'loginContainer'>
+<form  action= 'addprofilePic.php' method = 'post'  enctype=”multipart/form-data”>
+
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Add/Edit profile pic</label>
+    <input name = 'profilePic' type="file" class="form-control-file" id="exampleFormControlFile1"  value= "">
+  </div>
+<input type="submit" name="submit" value="upload" class = 'submitBtn'>
+</form>
+</section> -->
+
+<?php
+        $query = " select * from users WHERE `id` = '$id';";
+        $result = mysqli_query($con, $query);
+ 
+        while ($data = mysqli_fetch_assoc($result)) {
+        ?>
+            <img src="./image/<?php echo $data['profilePic']; ?>">
+ 
+        <?php
+        }
+        ?>
 
 
   

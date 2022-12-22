@@ -5,8 +5,6 @@ $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `co
 $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
 $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
 
-
-
 $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
 $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
 $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
@@ -23,9 +21,13 @@ $getCategory = "SELECT DISTINCT `category` FROM `todos` WHERE `userid` = '$id';"
 $allCategories = mysqli_query($con, $getCategory);
 $finalCategory = mysqli_fetch_all($allCategories);
 
-$getAllCategories = "SELECT `category` FROM `todos` WHERE `userid` = '$id';";
-$Cats = mysqli_query($con, $getAllCategories);
-$finalAllCategory = mysqli_fetch_all($Cats);
+$getAllCategoriesNC = "SELECT `category` FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
+$CatsNC = mysqli_query($con, $getAllCategoriesNC);
+$finalAllCategoryNC = mysqli_fetch_all($CatsNC);
+
+$getAllCategoriesC = "SELECT `category` FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
+$CatsC = mysqli_query($con, $getAllCategoriesC);
+$finalAllCategoryC = mysqli_fetch_all($CatsC);
 
 ?>
 
@@ -141,6 +143,10 @@ $finalAllCategory = mysqli_fetch_all($Cats);
             </select>
             <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Filter</button>
 
+    </form>
+
+    <form>
+      <button type="submit" class="input-group-text btn btn-primary" id="basic-addon2">Reset</button>
     </form>
             
         </div>

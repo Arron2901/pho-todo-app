@@ -4,10 +4,8 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require 'functions.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  // just to check input has been received 
-  // print_r($_POST);
 
-  // saving the data sent from user into variables 
+  // capturing the data sent from user into variables 
   // addslashes helps prevent problems if username contains an apostrophe
   $email = addslashes($_POST['email']);
   $password = $_POST['password'];
@@ -18,14 +16,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   // storing the result of the query in a variable 
   $result = mysqli_query($con, $query);
 
-  //if result is true (> 0, user exists) then redirect else error 
+  //if result is true (> 0, user exists) then redirect the pagr else error 
   if(mysqli_num_rows($result)> 0){
 
     // Fetches one row of data from the result set and returns it as an associative array
     $row = mysqli_fetch_assoc($result);
 
-    // saves the users info, allows it to be used on allpages throughout the session.
+    // sstores th login time aves the users info, allows it to be used on allpages throughout the session.
     $_SESSION["login_time_stamp"] = time(); 
+    // saves the users info, allows it to be used on allpages throughout the session.
     $_SESSION['info'] = $row;
     //print_r($row);
     header("Location: ../todo.php");

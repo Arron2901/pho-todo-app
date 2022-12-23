@@ -29,7 +29,7 @@ require "functions.php";
 </section>
 
     <div >
-      <img class = 'flexImage' src = '/image.svg'>
+      <img class = 'flexImage' src = 'image.svg'>
     </div>
   </div>
 </section>
@@ -62,4 +62,5 @@ require "functions.php";
 
   
 </body>
+
 </html>

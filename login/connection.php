@@ -4,5 +4,4 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 session_start();
 
 // establish a connection with the database 
-// $con = mysqli_connect('localhost','root','','todoprojectdb');
 $con = new mysqli('localhost','root','','todoprojectdb');

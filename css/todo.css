@@ -23,19 +23,6 @@
   color: black;
 }
 
-/* .navBar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px;
-  font-weight: bold;
-  background-color: #f1f2f6;
-  font-family: 'Assistant', sans-serif;
-  border-radius: 5px;
-  justify-content: space-between;
-  margin: 20px;
-  gap: 30px;
-} */
 
 .pageName {
   color: black;
@@ -98,15 +85,8 @@
   flex-direction: column;
   background-color:#dfe4ea;
   border-radius: 15px;
-  /* margin: 50px; */
-  /* padding-top: 20px; */
   font-family: 'Alata', sans-serif;
   font-family: 'Assistant', sans-serif;
-  /* padding-bottom: 20px; */
-  /* width: 500px; */
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* max-width: max-content; */
 
 }
 
@@ -115,15 +95,8 @@
     flex-direction: column;
     background-color: #dfe4ea;
     border-radius: 15px;
-    /* margin: 50px; */
-    /* padding-top: 20px; */
     font-family: 'Alata', sans-serif;
     font-family: 'Assistant', sans-serif;
-    /* padding-bottom: 20px; */
-    /* width: 500px; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* max-width: max-content; */
 }
 
 .todoContainer2{
@@ -134,9 +107,6 @@
   justify-content: space-between;
 
 }
-/* 
-.checkbox{
-  /* border-radius: 50px; */
 
 
 .todoContent{
@@ -173,7 +143,6 @@
       border: none;
       transition-duration: 0.4s;
       cursor: pointer;
-      /* color: white; */
       padding: 8px;
       background-color: white;
 }
@@ -195,7 +164,6 @@
   width: 400px;
   display: flex;
   flex-direction: column;
-  /* margin: 10px; */
   border-radius: 20px;
   padding: 20px;
   border-color: #2f3542;
@@ -220,12 +188,14 @@
       margin-left: auto;
       margin-right: auto;
       justify-content: space-between;
+      align-items: baseline;
+
 }
 
 .filterOptions{
       display: flex;
       flex-direction: row;
-      gap: 5px;
+      gap: 10px;
 }
 
 .todoSection{
@@ -242,6 +212,7 @@
 .filterStyle{
   color: white;
   font-weight: 500;
+  text-align: justify;
 }
 
 .bodyContainer{
@@ -253,12 +224,14 @@
     display: flex;
     flex-direction: row;
     background-color: #2f3542;
-    margin: 20px;
     border-radius: 20px;
-    width: 50%;
+    padding-left: 20px;
+    padding-right:20px;
     align-self: start;
     align-items: center;
     margin:auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
 
 }
 
@@ -267,11 +240,12 @@
         flex-direction: row;
         margin: 20px;
         border-radius: 20px;
-        /* width: 50%;
-        align-self: start;
-        align-items: center; */
-        /* margin: auto; */
   
+}
+
+.anotherContainer1{
+          display: flex;
+          flex-direction: row;
 }
 
 .featureContainer{
@@ -340,4 +314,3 @@
   background-color: #555555;
   color: white;
 }
-

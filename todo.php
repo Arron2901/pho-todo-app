@@ -114,41 +114,44 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 <section class = 'bodyContainer'>
 <div class = 'anotherContainer' >
 <h1 class= 'pageTitle' >Echo your To-do's</h1>
-    <section class='addContainer'>
-        <!-- <form method="post">
-            <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
-            <button class = 'submitBtn'>+</button>
-            <button type="button" class = 'updateBtn' data-toggle="modal" data-target="#exampleModal"> Update </button>
-        </form> -->
-        <form method = "post">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add</button>
-
-                    <button type="button" class = "btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">Update </button>
-                    </form>
-    </section>
-                    </div>
-
-    <section class = 'topContainer'>
     <!-- <section class='addContainer'> -->
         <!-- <form method="post">
             <input class = 'inputBox' type="text" name="todoName" placeholder="Enter your to do">
             <button class = 'submitBtn'>+</button>
             <button type="button" class = 'updateBtn' data-toggle="modal" data-target="#exampleModal"> Update </button>
         </form> -->
-        <!-- <form method = "post">
+
+    <!-- </section> -->
+     <section class='topContainer'>
+                          <section class='filterContainer'>
+        <div class = 'filterOptions'>
+              <form method = "post">
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add</button>
 
                     <button type="button" class = "btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">Update </button>
-                    </form>
-    </section> -->
+                    </form></div>
+                    </section>
+                    </section>
+                    </div>
+<!-- <div class = 'anotherContainer1'> -->
+                    <!-- <section class='topContainer'>
+                          <section class='filterContainer'>
+        <div class = 'filterOptions'>
+              <form method = "post">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add</button>
 
+                    <button type="button" class = "btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">Update </button>
+                    </form></div>
+                    </section>
+                    </section> -->
+
+    <section class = 'topContainer'>
     <section class='filterContainer'>
-        <p class = 'filterStyle' >Filter by:</p>
         <div class = 'filterOptions'>
 
     <form class = 'filterOptions' action="" method = "GET">
         <select name="sortOption" class="form-control">
-                <option value="" disabled selected>--Select Filter--</option>
+                <option value="" disabled selected>--Select A Filter--</option>
                 <option value="DueDate" <?php if(isset($_GET['sortOption']) && $_GET['sortOption'] == "DueDate") { echo "selected"; } ?> >Due Date</option>
                 <option value="" disabled >Categories</option>
 
@@ -171,6 +174,7 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 
     </section>
                 </section>
+                </div>
 
 
 <section class = 'todoSection' >

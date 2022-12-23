@@ -1,23 +1,15 @@
 <?php 
 $id = $_SESSION['info']['id'];
 
-$getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
+$getTodosNotCompleted = "SELECT * FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
 $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
 $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
 
 
-
-$getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
+$getTodosCompleted = "SELECT * FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
 $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
 $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
 
-$getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
-$allCompleted = mysqli_query($con, $getCompletedValues);
-$finalCompleted = mysqli_fetch_all($allCompleted);
-
-$getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";;
-$allDueDates = mysqli_query($con, $getDueDates);
-$finalDueDates = mysqli_fetch_all($allDueDates);
 
 $getCategory = "SELECT DISTINCT `category` FROM `todos` WHERE `userid` = '$id';";;
 $allCategories = mysqli_query($con, $getCategory);
@@ -100,7 +92,7 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
                 <label for="to-dos">Choose a To-do to edit:</label>
                 <select name="to-dos" id="to-dos">
                     <?php for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
-                        <option value= '<?php echo $finalTodosNotCompleted[$x][0] ?>'><?php echo $finalTodosNotCompleted[$x][0] ?></option>
+                        <option value= '<?php echo $finalTodosNotCompleted[$x][1] ?>'><?php echo $finalTodosNotCompleted[$x][1] ?></option>
                     <?php endfor ?>
                 </select>
                     </div>
@@ -209,21 +201,21 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
         } else if ($_GET['sortOption'] !== "DueDate" && $_GET['sortOption'] !== "") {
             $chosenSort = $_GET['sortOption'];
             
-            $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0 AND `category` = '$chosenSort';";
+            $getTodosNotCompleted = "SELECT * FROM `todos` WHERE `userid` = '$id' AND `completed` = 0 AND `category` = '$chosenSort';";
             $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
             $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
           
-            $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
-            $allDueDates = mysqli_query($con, $getDueDates);
-            $finalDueDates = mysqli_fetch_all($allDueDates);
+            // $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
+            // $allDueDates = mysqli_query($con, $getDueDates);
+            // $finalDueDates = mysqli_fetch_all($allDueDates);
 
-            $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1 AND `category` = '$chosenSort';";
+            $getTodosCompleted = "SELECT * FROM `todos` WHERE `userid` = '$id' AND `completed` = 1 AND `category` = '$chosenSort';";
             $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
             $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
           
-            $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
-            $allCompleted = mysqli_query($con, $getCompletedValues);
-            $finalCompleted = mysqli_fetch_all($allCompleted);
+            // $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id' AND `category` = '$chosenSort';";;
+            // $allCompleted = mysqli_query($con, $getCompletedValues);
+            // $finalCompleted = mysqli_fetch_all($allCompleted);
 
             require "categoryFilter.php";
 
@@ -241,41 +233,6 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 
             </section>
             </section>
-
-
-
-<!-- <table>
-    <tr>
-      <th scope=>#</th>
-      <th scope="col">ToDo</th>
-      <th scope="col">Due Date</th>
-      <th scope = 'col'>Category</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> -->
-
-
 
     <script>
         const checkboxes = document.querySelectorAll('input[type=checkbox]')

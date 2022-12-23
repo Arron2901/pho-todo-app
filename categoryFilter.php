@@ -6,14 +6,14 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
         <div class= 'todoContent'>
 
          <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
-            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
+            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][1] ?>">
             <input type = 'checkbox'>
         </form>
 
-        <?php echo $finalTodosNotCompleted[$x][0]; ?>
+        <?php echo $finalTodosNotCompleted[$x][1]; ?>
         <br>
-        <?php if($finalDueDates[$x][0] !== "0000-00-00"){
-            echo date_format(date_create($finalDueDates[$x][0]),"d M Y");
+        <?php if($finalTodosNotCompleted[$x][4] !== "0000-00-00"){
+            echo date_format(date_create($finalTodosNotCompleted[$x][4]),"d M Y");
             echo "<br>";
         }; ?>
         <?php echo $chosenSort; ?>
@@ -23,7 +23,7 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
         <div class = 'todoActionsContainer'>
 
         <form action = "delete.php" method="post" class = 'todoActions'>
-            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][0] ?>">
+            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosNotCompleted[$x][1] ?>">
             <button class = 'deleteBtn'>Delete</button>
         </form>
 
@@ -45,10 +45,14 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
         <div class= 'todoContainer2'>
          <div class= 'todoContent'>
         <form action = "changeStatus.php" method = "post" style = "display: inline-block;">
-            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
+            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][1] ?>">
             <input type = 'checkbox' checked="checked">
-            <?php echo $finalTodosCompleted[$x][0]; ?>
+            <?php echo $finalTodosCompleted[$x][1]; ?>
             <br>
+             <?php if($finalTodosCompleted[$x][4] !== "0000-00-00"){
+                    echo date_format(date_create($finalTodosCompleted[$x][4]),"d M Y");
+                    echo "<br>";
+                }; ?>
             <?php echo $chosenSort; ?>
         </form>
         </div>
@@ -56,7 +60,7 @@ for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
 
         <div class = 'todoActionsContainer'>
         <form action = "delete.php" method="post"class = 'todoActions'>
-            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][0] ?>">
+            <input type="hidden" name = "todo_name" value = "<?php echo $finalTodosCompleted[$x][1] ?>">
             <button class = 'deleteBtn'>Delete</button>
         </form>
 

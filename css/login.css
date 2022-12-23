@@ -50,13 +50,13 @@
   color: white;
 }
 
-.navBar{
+.navBar {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 20px;
   font-weight: bold;
-  background-color:#f1f2f6;
+  background-color: #f1f2f6;
   font-family: 'Assistant', sans-serif;
   border-radius: 5px;
   justify-content: space-between;

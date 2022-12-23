@@ -4,16 +4,6 @@ require './login/functions.php';
 
  $id = $_SESSION['info']['id'];
 
-  $getName = "SELECT name FROM `users` WHERE `id` = '$id';";
-  $nameResult = mysqli_query($con, $getName);
-  $nameResult = mysqli_fetch_all($nameResult);
-
-  $getEmail = "SELECT email FROM `users` WHERE `id` = '$id';";
-  $emailResult = mysqli_query($con, $getEmail);
-  $emailResult = mysqli_fetch_all($emailResult);
-
-  // $updated = false;
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -50,7 +40,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 }
-
-
-
 ?>

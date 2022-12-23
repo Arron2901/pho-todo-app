@@ -28,26 +28,4 @@
             header("Location: todo.php");
         }
     }
-
-    $getTodosNotCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 0;";
-    $allTodosNotCompleted = mysqli_query($con, $getTodosNotCompleted);
-    $finalTodosNotCompleted = mysqli_fetch_all($allTodosNotCompleted);
-
-    
-
-    $getTodosCompleted = "SELECT todo FROM `todos` WHERE `userid` = '$id' AND `completed` = 1;";
-    $allTodosCompleted = mysqli_query($con, $getTodosCompleted);
-    $finalTodosCompleted = mysqli_fetch_all($allTodosCompleted);
-
-    $getCompletedValues = "SELECT `completed` FROM `todos` WHERE `userid` = '$id';";;
-    $allCompleted = mysqli_query($con, $getCompletedValues);
-    $finalCompleted = mysqli_fetch_all($allCompleted);
-
-    $getDueDates = "SELECT `date` FROM `todos` WHERE `userid` = '$id';";;
-    $allDueDates = mysqli_query($con, $getDueDates);
-    $finalDueDates = mysqli_fetch_all($allDueDates);
-
-    $getCategory = "SELECT DISTINCT `category` FROM `todos` WHERE `userid` = '$id';";;
-    $allCategories = mysqli_query($con, $getCategory);
-    $finalCategory = mysqli_fetch_all($allCategories);
 ?>

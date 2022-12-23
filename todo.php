@@ -22,8 +22,21 @@ $getIndividualCategories = "SELECT `category` FROM `todos` WHERE `userid` = '$id
 $allIndividualCategories = mysqli_query($con, $getIndividualCategories);
 $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
 
+ $todoName = $_POST['to-dos'];
 
-?>
+  $query = "SELECT date, category FROM todos where todo = '$todoName' AND `userid` = '$id'";
+  $result = $con -> query($query);
+
+  if($result ->num_rows > 0){
+    while($row = $result ->fetch_assoc()){
+      $date = $row["date"];
+      $category = $row["category"];
+    } 
+  } else {
+      echo "no results";
+    };
+ ?>
+
 <?php require  "./css/html.php";?>
 <body>
 
@@ -79,37 +92,40 @@ $finalIndividualCategories = mysqli_fetch_all($allIndividualCategories);
         </button>
       </div>
       <div class="modal-body">
-            <form class = 'updateContainer' action = "editTodo.php" method="post">
-              <div class = 'categoryContainer'>
+        <section class = 'updateContainer'>
+          <form action = '' method="post">
+           <div class = 'categoryContainer'>
                 <label for="to-dos">Choose a To-do to edit:</label>
                 <select name="to-dos" id="to-dos">
                     <?php for ($x = 0; $x < count($finalTodosNotCompleted); $x++): ?>
                         <option value= '<?php echo $finalTodosNotCompleted[$x][1] ?>'><?php echo $finalTodosNotCompleted[$x][1] ?></option>
                     <?php endfor ?>
                 </select>
-                    </div>
-
-                     <div class = 'featureContainer'>
+                <button> select <button>
+                </form>
+                <div class = 'featureContainer'>
+            <form action = "editTodo.php" method="post">
             
             <div class = 'dateContainer'>
               <p> Due Date </p>
-              <input class = 'dateDropdown' value = '<?php echo date("d/m/Y") ?>' type="date" name="dueDate">
+              <input class = 'dateDropdown' value = '<?php echo "$date"?>' type="date" name="dueDate">
             </div>
 
             <div class = 'categoryContainer'>
               <p>Category</p>
-              <input class = 'categoryDropdown' type="text" name="categoryName">
+              <input class = 'categoryDropdown' value = '<?php echo "$category"?>' type="text" name="categoryName">
             </div>
             </div>
-
                 <input class = 'updateInputContainer' type="text" name = "updatedTodo" 
                 placeholder = 'Enter your updated Todo here '>
                 <button class="updateBtn">Update</button>
             </form>
+          </section>
       </div>
     </div>
   </div>
 </div>
+
 
 <section class = 'bodyContainer'>
 <div class = 'anotherContainer' >
